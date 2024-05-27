@@ -1,4 +1,5 @@
 import streamlit as st
+import langchain_community
 from llm_functions import load_data, split_text, initialize_llm, generate_questions, create_retrieval_qa_chain
 from langchain_community.vectorstores import Chroma
 

@@ -1,4 +1,4 @@
-# 🤖 PDF Research Bot
+# 🤖 PDF Research Bot.
 
 **PDF Research Bot** is a web application built using Streamlit, LangChain, and OpenAI's GPT-3.5 language model, designed to assist users in researching PDF documents by generating questions and finding answers. This tool simplifies the process of extracting relevant information from PDFs, making research more efficient and accessible.
 

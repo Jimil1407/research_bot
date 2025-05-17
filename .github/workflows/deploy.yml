@@ -49,6 +49,6 @@ jobs:
 
       - name: Run the app
         run: |
-          streamlit run pdf_bot.py
+          nohup streamlit run pdf_bot.py --server.port 8501 --server.enableCORS false > streamlit.log 2>&1 & EOF
   
       

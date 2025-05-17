@@ -5,3 +5,4 @@ pypdf2
 tiktoken
 chromadb
 langchain_community
+

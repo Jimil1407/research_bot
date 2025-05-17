@@ -1,0 +1,51 @@
+name: Deploy on AWS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+      - run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+
+      - name: SSH into machine
+      - run: |
+          ssh -i ~/.ssh/id_rsa ${{secrets.EC2_USER}}@${{secrets.EC2_HOST}} "echo '✅ Connected from GitHub Actions'; uname -a"
+
+      -name: Install Git
+      - run: |
+          sudo apt-get update
+          sudo apt-get install git
+
+      - name: Install Python
+      - run: |
+          sudo apt-get update
+          sudo apt -y upgrade
+          sudo apt-get install python3 python3-pip
+
+      - name: Clone the repository
+      - run: |
+          git clone ${{secrets.REPO_URL}}
+
+      - name: Change directory
+      - run: |
+          cd research_bot
+
+      - name: Install dependencies
+      - run: |
+          
+          pip install -r requirements.txt
+
+      - name: Run the app
+      - run: |
+          streamlit run pdf_bot.py
+  
+      

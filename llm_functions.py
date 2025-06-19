@@ -16,6 +16,8 @@ def load_data(uploaded_file):
     
     return text
 
+#function to split text
+
 def split_text(text, chunk_size, chunk_overlap):
     text_splitter = TokenTextSplitter(model_name="gpt-3.5-turbo-16k", chunk_size=chunk_size, chunk_overlap=chunk_overlap)
     text_chunks = text_splitter.split_text(text)

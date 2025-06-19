@@ -3,7 +3,7 @@ import langchain_community
 from llm_functions import load_data, split_text, initialize_llm, generate_questions, create_retrieval_qa_chain
 from langchain_community.vectorstores import Chroma
 
-
+#checking states
 
 if 'questions' not in st.session_state:
     st.session_state['questions'] = 'empty'
